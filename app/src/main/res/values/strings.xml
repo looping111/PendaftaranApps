@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">PendaftaranApps</string>
+    <string name="nama_siswa">Nama Siswa</string>
+    <string name="asal_sekolah">Asal Sekolah</string>
+    <string name="jenis_kelamin">Jenis Kelamin</string>
+    <string name="agama">Agama</string>
+    <string name="alamat">Alamat</string>
+    <string name="save">SAVE</string>
+    <string name="delete">DELETE</string>
+    <string name="update">UPDATE</string>
+    <string name="error">Harap isi semua field</string>
+</resources>
