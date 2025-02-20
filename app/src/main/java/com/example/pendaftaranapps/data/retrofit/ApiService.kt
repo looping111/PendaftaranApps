@@ -17,21 +17,21 @@ interface ApiService {
     @POST("api-add-siswa.php")
     fun addSiswa(
         @Field("nama") nama: String,
+        @Field("alamat") alamat: String,
         @Field("jenis_kelamin") jenisKelamin: String,
         @Field("agama") agama: String,
-        @Field("sekolah_asal") sekolahAsal: String,
-        @Field("alamat") alamat: String
+        @Field("sekolah_asal") sekolahAsal: String
     ) : Call<AddUpdateResponse>
 
     @FormUrlEncoded
     @POST("api-update-siswa.php")
     fun updateSiswa(
-        @Field("id") id: Int,
+        @Query("id") id: Int,
         @Field("nama") nama: String,
+        @Field("alamat") alamat: String,
         @Field("jenis_kelamin") jenisKelamin: String,
         @Field("agama") agama: String,
-        @Field("sekolah_asal") sekolahAsal: String,
-        @Field("alamat") alamat: String
+        @Field("sekolah_asal") sekolahAsal: String
         ) : Call<AddUpdateResponse>
 
     @FormUrlEncoded
