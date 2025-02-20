@@ -34,14 +34,8 @@ interface ApiService {
         @Field("sekolah_asal") sekolahAsal: String
         ) : Call<AddUpdateResponse>
 
-    @FormUrlEncoded
     @POST("api-delete-siswa.php")
     fun deleteSiswa(
-        @Query("id") id : Int,
-        @Field("nama") nama : String,
-        @Field("jenis_kelamin") jenis_kelamin : String,
-        @Field("agama") agama : String,
-        @Field("sekolah_asal") sekolah_asal : String,
-        @Field("alamat") alamat : String
+        @Query("id") id : Int
     ): Call<AddUpdateResponse>
 }

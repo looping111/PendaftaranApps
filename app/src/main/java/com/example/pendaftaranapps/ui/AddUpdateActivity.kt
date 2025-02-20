@@ -41,6 +41,10 @@ class AddUpdateActivity : AppCompatActivity() {
             binding.btnSaveUpdate.text = getString(R.string.update)
             binding.btnDelete.visibility = View.VISIBLE
 
+            binding.btnDelete.setOnClickListener {
+                deleteSiswa(id)
+            }
+
             binding.etNama.setText("${siswa.nama}")
             binding.etAlamat.setText("${siswa.alamat}")
             binding.etJK.setText("${siswa.jenisKelamin}")
@@ -51,19 +55,6 @@ class AddUpdateActivity : AppCompatActivity() {
             binding.btnDelete.visibility = View.GONE
         }
 
-        binding.btnDelete.setOnClickListener {
-            val nama = binding.etNama.text.toString()
-            val alamat = binding.etAlamat.text.toString()
-            val agama = binding.etAgama.text.toString()
-            val jenisKelamin = binding.etJK.text.toString()
-            val sekolahAsal = binding.etSekolahAsal.text.toString()
-
-            if (nama.isEmpty() || alamat.isEmpty() || agama.isEmpty() || jenisKelamin.isEmpty() || sekolahAsal.isEmpty()) {
-                Toast.makeText(this, "Tidak boleh ada yang kosong", Toast.LENGTH_SHORT).show()
-            } else {
-                deleteSiswa(nama, alamat, agama, jenisKelamin, sekolahAsal)
-            }
-        }
 
         binding.btnSaveUpdate.setOnClickListener {
             val nama = binding.etNama.text.toString()
@@ -93,15 +84,11 @@ class AddUpdateActivity : AppCompatActivity() {
     }
 
     private fun deleteSiswa(
-        nama: String,
-        alamat: String,
-        agama: String,
-        jenisKelamin: String,
-        sekolahAsal: String
+        id: Int
     ) {
         showLoading(true)
         val client = ApiConfig.getApiService()
-            .deleteSiswa(id, nama, alamat, agama, jenisKelamin, sekolahAsal)
+            .deleteSiswa(id)
         client.enqueue(object : Callback<AddUpdateResponse> {
 
             override fun onFailure(call: Call<AddUpdateResponse>, t: Throwable) {
